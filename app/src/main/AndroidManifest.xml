@@ -21,7 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".HomeActivity"/>
+=======
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Activity_Alarm"></activity>
+>>>>>>> origin/master
     </application>
 
 </manifest>

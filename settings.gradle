@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 include ':app', ':QDLibrary'
+=======
+include ':app', ':verseslibrary'
+>>>>>>> origin/master
