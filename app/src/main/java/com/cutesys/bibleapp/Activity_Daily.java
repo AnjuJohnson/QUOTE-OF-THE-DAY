@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cutesys.bibleapp.Alarm.AlarmMe;
+
 /**
  * Created by user on 4/18/2017.
  */
@@ -22,7 +24,7 @@ public class Activity_Daily extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),Activity_Alarm.class);
+                Intent intent = new Intent(getActivity(),AlarmMe.class);
                 startActivity(intent);
                 getActivity().overridePendingTransition(R.anim.bottom_up,
                         android.R.anim.fade_out);
