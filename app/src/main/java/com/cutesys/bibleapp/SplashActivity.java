@@ -38,8 +38,8 @@ public class SplashActivity extends AppCompatActivity {
                     public void run() {
                         finish();
 
-                        // Start MainActivity.class
-                        Intent myIntent = new Intent(SplashActivity.this,MainActivity.class);
+                        // Start HomeActivity.class
+                        Intent myIntent = new Intent(SplashActivity.this,HomeActivity.class);
                         startActivity(myIntent);
                     }
                 });

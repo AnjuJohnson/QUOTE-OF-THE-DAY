@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/progress_view"
+    style="@style/viewlayout"
+    android:visibility="invisible">
+
+    <com.cutesys.qdlibrary.Progressview.ProgressView
+        android:id="@+id/progressView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        app:gp_figure_padding="8dp"
+        app:gp_number_of_angles="10"
+        app:gp_type="triangle" />
+
+</LinearLayout>

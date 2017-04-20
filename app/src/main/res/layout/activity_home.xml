@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="@dimen/menupading"
-            android:src="@mipmap/ic_action_menu"/>
+            android:src="@mipmap/ic_launcher"/>
         <TextView
             android:id="@+id/mTitle"
             android:layout_width="wrap_content"
@@ -45,24 +45,11 @@
                 app:tabBackground="@color/tablayoutbg"
                 app:tabIndicatorColor="#4CAF50"
                 app:tabTextColor="#9E9E9E"
-                app:tabIndicatorHeight="5dp"
+                app:tabIndicatorHeight="3dp"
                 app:tabSelectedTextColor="#ffffff"
                 app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget">
             </android.support.design.widget.TabLayout>
 
-           <!-- <android.support.design.widget.TabLayout
-                android:id="@+id/tablayout"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                app:tabBackground="@color/tablayoutbg"
-                app:tabIndicatorColor="#4CAF50"
-                app:tabMode="scrollable"
-                app:tabTextColor="#9E9E9E"
-                app:tabSelectedTextColor="#ffffff"
-                app:tabIndicatorHeight="2dp"
-                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-                />-->
         </FrameLayout>
         <FrameLayout
             android:layout_width="match_parent"

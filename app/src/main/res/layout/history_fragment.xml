@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@drawable/img3">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#B3000000"/>
+
+    <include layout="@layout/view_progress" />
+
+    <!-- <include layout="@layout/view_error"
+         android:layout_height="match_parent"
+         android:layout_width="match_parent"
+         android:layout_marginTop="?attr/actionBarSize"/>
+
+     <include layout="@layout/view_em
+     pty"
+         android:layout_height="match_parent"
+         android:layout_width="match_parent"
+         android:layout_marginTop="?attr/actionBarSize"/>
+ &ndash;&gt;-->
+
+    <FrameLayout
+        android:id="@+id/contentview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v4.view.ViewPager>
+        <LinearLayout
+            android:id="@+id/viewPagerIndicator"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_gravity="bottom"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/viewPagerCountDots"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:orientation="horizontal" />
+
+        </LinearLayout>
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center|top"
+        android:gravity="center"
+        android:background="@drawable/buttonshape"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:id="@+id/imgGenerated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:typeface="serif"
+            android:textColor="#ec4242"
+            android:textSize="17sp"/>
+    </LinearLayout>
+
+    <com.cutesys.qdlibrary.FloatingActionButton
+        android:id="@+id/setdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:src="@mipmap/ic_calendar"
+        style="@style/MenuButtonsStyle" />
+
+</FrameLayout>
