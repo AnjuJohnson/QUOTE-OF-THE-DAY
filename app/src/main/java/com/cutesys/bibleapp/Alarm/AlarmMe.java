@@ -36,6 +36,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 
+import com.cutesys.bibleapp.HomeActivity;
 import com.cutesys.bibleapp.R;
 
 
@@ -239,5 +240,15 @@ public class AlarmMe extends AppCompatActivity
     }
   };
 
+  @Override
+  public void onBackPressed() {
+    super.onBackPressed();
+    Intent i=new Intent(getApplicationContext(), HomeActivity.class);
+    startActivity(i);
+    overridePendingTransition(android.R.anim.fade_in,
+            R.anim.bottom_down);
+    finish();
+
+  }
 }
 

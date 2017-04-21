@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BibleApp</string>
+    <string name="app_name">Thought for the day</string>
     <string-array name="occurence">
         <item>Once</item>
         <item>Weekly</item>

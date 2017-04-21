@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -40,7 +41,7 @@ public class SplashActivity  extends AppCompatActivity {
     private EditText mInputName;
     Config mConfig;
     TextView mWelcome,mEdit;
-    private LinearLayout mInvisiblelayout;
+    private CardView mInvisiblelayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class SplashActivity  extends AppCompatActivity {
         mSubmit=(FloatingActionButton) findViewById(R.id.submit);
         mInputName=(EditText)findViewById(R.id.inputname);
         mWelcome=(TextView) findViewById(R.id.welcome);
-        mInvisiblelayout=(LinearLayout) findViewById(R.id.Invisiblelayout);
+        mInvisiblelayout=(CardView) findViewById(R.id.Invisiblelayout);
        /* slideUpAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.slide_up_animation);
         startSlideUpAnimation();
@@ -97,6 +98,7 @@ public class SplashActivity  extends AppCompatActivity {
 
         if(!sPreferences.getString("NewUserId","").equals("")){
             mInvisiblelayout.setVisibility(View.GONE);
+            mSubmit.setVisibility(View.VISIBLE);
             mWelcome.setText("Welcome "+sPreferences.getString("UserName",""));
             Log.d("username=",sPreferences.getString("UserName",""));
             mEdit.setVisibility(View.VISIBLE);
