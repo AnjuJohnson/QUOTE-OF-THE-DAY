@@ -1,22 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical"
-  android:padding="8dip"
-  android:background="@drawable/list_item_bg"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent">
+    android:orientation="horizontal"
+    android:padding="8dip"
+    android:background="@drawable/list_item_bg"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-  <TextView
-    style="@style/list_item"
-    android:id="@+id/item_title"
-    android:textSize="18dip"
-    android:textStyle="bold" />
+  <LinearLayout
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="0.4">
+    <TextView
+        style="@style/list_item"
+        android:id="@+id/item_details"
+        android:textSize="15dip"
+        android:textStyle="bold"
+        android:textColor="@color/alarm_details" />
+  </LinearLayout>
+  <LinearLayout
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="0.1dp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="8dp"
+        android:background="@color/alarm_title_outdated">
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+      <TextView
+          style="@style/list_item"
+          android:id="@+id/item_title"
+          android:textSize="17dip"
+          android:textStyle="bold" />
+      <TextView
+          style="@style/list_item"
+          android:id="@+id/item_on_off"
+          android:textSize="12dip"
+          android:textStyle="bold" />
+    </LinearLayout>
+  </LinearLayout>
 
-  <TextView
-    style="@style/list_item"
-    android:id="@+id/item_details"
-    android:textSize="14dip"
-    android:textColor="@color/alarm_details" />
+  <LinearLayout
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="0.2">
 
+  </LinearLayout>
 </LinearLayout>
-

@@ -127,21 +127,30 @@ class AlarmListAdapter extends BaseAdapter
       holder = new ViewHolder();
       holder.title = (TextView)convertView.findViewById(R.id.item_title);
       holder.details = (TextView)convertView.findViewById(R.id.item_details);
-
+      holder.item_on_off=(TextView)convertView.findViewById(R.id.item_on_off);
       convertView.setTag(holder);
     }
     else
     {
       holder = (ViewHolder)convertView.getTag();
     }
-  
-    holder.title.setText(alarm.getTitle());
-    holder.details.setText(mDateTime.formatDetails(alarm) + (alarm.getEnabled() ? "" : " [disabled]"));
 
-    if (alarm.getOutdated())
+    holder.title.setText(alarm.getTitle());
+    holder.item_on_off.setText(alarm.getEnabled() ? "On" : " Off");
+    holder.details.setText(mDateTime.formatTime(alarm));
+
+    if (alarm.getOutdated()) {
       holder.title.setTextColor(mColorOutdated);
-    else
+      holder.details.setTextColor(mColorOutdated);
+      holder.item_on_off.setTextColor(mColorOutdated);
+      holder.item_on_off.setText("Off");
+    }
+    else {
       holder.title.setTextColor(mColorActive);
+      holder.details.setTextColor(mColorActive);
+      holder.item_on_off.setTextColor(mColorActive);
+      holder.item_on_off.setText("On");
+    }
 
     return convertView;
   }
@@ -183,6 +192,7 @@ class AlarmListAdapter extends BaseAdapter
   {
     TextView title;
     TextView details;
+    TextView item_on_off;
   }
 }
 
