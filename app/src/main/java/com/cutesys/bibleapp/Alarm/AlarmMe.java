@@ -35,7 +35,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.cutesys.bibleapp.MainActivity;
+
 import com.cutesys.bibleapp.R;
 
 

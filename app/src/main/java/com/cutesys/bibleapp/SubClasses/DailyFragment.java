@@ -1,5 +1,6 @@
 package com.cutesys.bibleapp.SubClasses;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,11 +13,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cutesys.bibleapp.AdapterClasses.ViewPagerAdapter;
+import com.cutesys.bibleapp.Alarm.AlarmMe;
 import com.cutesys.bibleapp.Helperclasses.Config;
 import com.cutesys.bibleapp.Helperclasses.HttpOperations;
 import com.cutesys.bibleapp.Helperclasses.ListItem;
 import com.cutesys.bibleapp.Helperclasses.SqliteHelper;
 import com.cutesys.bibleapp.R;
+import com.cutesys.qdlibrary.FloatingActionButton;
 import com.cutesys.qdlibrary.Switcher.Switcher;
 
 import org.json.JSONArray;
@@ -39,7 +42,7 @@ public class DailyFragment extends Fragment {
     private Calendar cal;
     private int day, year, month;
     private String mDate, mday, mmonth;
-
+    private FloatingActionButton setdate;
     private ViewPagerAdapter mViewpagerAdapter;
 
     private ViewPager mViewpager;
@@ -70,7 +73,17 @@ public class DailyFragment extends Fragment {
     }
 
     private void InitIDView(View rootview){
-
+        setdate = (FloatingActionButton) rootview.findViewById(R.id.setdate);
+        setdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),AlarmMe.class);
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.bottom_up,
+                        android.R.anim.fade_out);
+                getActivity().finish();
+            }
+        });
         cal = Calendar.getInstance();
         day = cal.get(java.util.Calendar.DAY_OF_MONTH);
         month = cal.get(java.util.Calendar.MONTH);

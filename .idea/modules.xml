@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/QDLibrary/QDLibrary.iml" filepath="$PROJECT_DIR$/QDLibrary/QDLibrary.iml" />
-=======
->>>>>>> origin/master
       <module fileurl="file://$PROJECT_DIR$/QD_ANDROID_QUOTE-OF-THE-DAY.iml" filepath="$PROJECT_DIR$/QD_ANDROID_QUOTE-OF-THE-DAY.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/verseslibrary/verseslibrary.iml" filepath="$PROJECT_DIR$/verseslibrary/verseslibrary.iml" />
     </modules>
   </component>
 </project>
