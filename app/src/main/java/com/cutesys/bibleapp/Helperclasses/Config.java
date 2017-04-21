@@ -73,4 +73,10 @@ public class Config {
         }
         return false;
     }
+    public void savePreferences(Context mContext, String key ,String value) {
+        sPreferences = mContext.getSharedPreferences("Thoughtoftheday", mContext.MODE_PRIVATE);
+        prefEditor = sPreferences.edit();
+        prefEditor.putString(key, value);
+        prefEditor.commit();
+    }
 }
