@@ -33,11 +33,11 @@ import java.util.ArrayList;
  * Created by Kris on 4/19/2017.
  */
 
-public class NotificationFragment extends Fragment {
+public class NotificationFragment extends Fragment implements View.OnClickListener{
 
     private Switcher switcher;
     private RecyclerView mrecyclerview;
-
+    private TextView error_label_retry, empty_label_retry;
     private NotificationAdapter mNotificationAdapter;
     ArrayList<ListItem> dataItem;
     int start = 0;
@@ -62,7 +62,10 @@ public class NotificationFragment extends Fragment {
                  .setEmptyLabel((TextView) rootview.findViewById(R.id.empty_label))
                  .addEmptyView(rootview.findViewById(R.id.empty_view))
                 .build();
-
+        error_label_retry = ((TextView) rootview.findViewById(R.id.error_label_retry));
+        empty_label_retry = ((TextView)rootview.findViewById(R.id.empty_label_retry));
+        error_label_retry.setOnClickListener(this);
+        empty_label_retry.setOnClickListener(this);
         mrecyclerview = ((RecyclerView)rootview.findViewById(R.id.mrecyclerview));
         mrecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
@@ -85,6 +88,19 @@ public class NotificationFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onClick(View v) {
+        int buttonId = v.getId();
+
+        switch (buttonId) {
+            case R.id.error_label_retry:
+                InitGetData();
+                break;
+            case R.id.empty_label_retry:
+                InitGetData();
+                break;
+        }
+    }
     public class LoadThoughtNotificationInitiate extends AsyncTask<Void, StringBuilder, StringBuilder> {
 
         @Override

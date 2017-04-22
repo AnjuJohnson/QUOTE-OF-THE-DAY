@@ -47,7 +47,7 @@ public class HistoryFragment extends Fragment implements View.OnClickListener{
     private String mDate, mday, mmonth;
 
     private ViewPagerAdapter mViewpagerAdapter;
-
+    private TextView error_label_retry, empty_label_retry;
     private Switcher switcher;
     private FloatingActionButton setdate;
     private ImageView[] dots;
@@ -111,7 +111,10 @@ public class HistoryFragment extends Fragment implements View.OnClickListener{
                 .setEmptyLabel((TextView) rooView.findViewById(R.id.empty_label))
                  .addEmptyView(rooView.findViewById(R.id.empty_view))
                 .build();
-
+        error_label_retry = ((TextView) rooView.findViewById(R.id.error_label_retry));
+        empty_label_retry = ((TextView)rooView.findViewById(R.id.empty_label_retry));
+        error_label_retry.setOnClickListener(this);
+        empty_label_retry.setOnClickListener(this);
         final List<HashMap<String, String>> Data_Item;
         Data_Item = helper.getthoughtdetails();
 
@@ -151,6 +154,12 @@ public class HistoryFragment extends Fragment implements View.OnClickListener{
         int buttonId = view.getId();
 
         switch (buttonId){
+            case R.id.error_label_retry:
+                InitDataView(mDate);
+                break;
+            case R.id.empty_label_retry:
+                InitDataView(mDate);
+                break;
             case R.id.setdate:
                 Calendar mCurrentDate = Calendar.getInstance();
                 int mYear = mCurrentDate.get(Calendar.YEAR);

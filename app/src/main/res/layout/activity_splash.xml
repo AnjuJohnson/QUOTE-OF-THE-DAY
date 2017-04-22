@@ -55,7 +55,7 @@
                         android:hint="Enter your Name"
                         android:layout_gravity="bottom"
                         android:gravity="bottom"
-                        android:maxLines="1"
+                        android:singleLine="true"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         />

@@ -35,7 +35,7 @@ import java.util.List;
 /**
  * Created by user on 4/18/2017.
  */
-public class DailyFragment extends Fragment {
+public class DailyFragment extends Fragment implements View.OnClickListener {
 
     private SqliteHelper helper;
 
@@ -46,7 +46,7 @@ public class DailyFragment extends Fragment {
     private FloatingActionButton setdate;
     private Button Review;
     private ViewPagerAdapter mViewpagerAdapter;
-
+    private TextView error_label_retry, empty_label_retry;
     private ViewPager mViewpager;
     private LinearLayout pager_indicator;
     private ImageView[] dots;
@@ -128,7 +128,10 @@ public class DailyFragment extends Fragment {
 
         mViewpager=(ViewPager)rootview.findViewById(R.id.viewpager);
         pager_indicator = (LinearLayout)rootview.findViewById(R.id.viewPagerCountDots);
-
+        error_label_retry = ((TextView) rootview.findViewById(R.id.error_label_retry));
+        empty_label_retry = ((TextView)rootview.findViewById(R.id.empty_label_retry));
+        error_label_retry.setOnClickListener(this);
+        empty_label_retry.setOnClickListener(this);
         final List<HashMap<String, String>> Data_Item;
         Data_Item = helper.getthoughtdetails();
 
@@ -161,6 +164,19 @@ public class DailyFragment extends Fragment {
             mLoadThoughtInitiate.execute((Void) null);
         }else {
              switcher.showErrorView("No Internet Connection");
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        int buttonId = v.getId();
+        switch (buttonId) {
+            case R.id.error_label_retry:
+                InitDataView(mDate);
+                break;
+            case R.id.empty_label_retry:
+                InitDataView(mDate);
+                break;
         }
     }
 
