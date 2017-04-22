@@ -85,12 +85,12 @@ public class AlarmMe extends AppCompatActivity
     close.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        /*Intent intent = new Intent(AlarmMe.this,MainActivity.class);
-        intent.putExtra("PAGE","COUNTRY");
+        Intent intent = new Intent(AlarmMe.this,HomeActivity.class);
+        //intent.putExtra("PAGE","COUNTRY");
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in,
                 R.anim.bottom_down);
-        finish();*/
+        finish();
       }
     });
     mAlarmListAdapter = new AlarmListAdapter(this);
