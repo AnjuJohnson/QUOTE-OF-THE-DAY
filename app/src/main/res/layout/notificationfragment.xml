@@ -12,6 +12,8 @@
         android:background="#B1000000"/>
 
     <include layout="@layout/view_progress" />
+    <include layout="@layout/view_error" />
+    <include layout="@layout/view_empty" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/mrecyclerview"

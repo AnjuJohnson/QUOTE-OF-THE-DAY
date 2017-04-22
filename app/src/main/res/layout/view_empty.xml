@@ -2,8 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/empty_view"
     style="@style/viewlayout"
-
-    android:background="#ffffff"
     android:visibility="invisible">
 
         <ImageView
@@ -18,7 +16,7 @@
             android:text="No Data Found"
             android:gravity="center"
             android:typeface="serif"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:layout_marginTop="10dp"
             android:textSize="16sp" />
 

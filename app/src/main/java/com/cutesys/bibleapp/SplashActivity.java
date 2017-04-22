@@ -75,7 +75,8 @@ public class SplashActivity  extends AppCompatActivity {
             public void onClick(View v) {
                 mConfig = new Config(getApplicationContext());
                 if (mConfig.isOnline(getApplicationContext())) {
-                    SplashActivity.LoadAddUser mLoadAddUser = new LoadAddUser(mInputName.getText().toString().trim());
+                    SplashActivity.LoadAddUser mLoadAddUser = new LoadAddUser(mInputName.getText().toString().trim()
+                            .replace(" ", "%20"));
                     mLoadAddUser.execute((Void) null);
                 } else {
                     Toast.makeText(getApplicationContext(),"No Internet",Toast.LENGTH_SHORT).show();

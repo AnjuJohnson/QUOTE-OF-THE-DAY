@@ -11,18 +11,9 @@
         android:background="#B3000000"/>
 
     <include layout="@layout/view_progress" />
+    <include layout="@layout/view_empty" />
+    <include layout="@layout/view_error" />
 
-    <!-- <include layout="@layout/view_error"
-         android:layout_height="match_parent"
-         android:layout_width="match_parent"
-         android:layout_marginTop="?attr/actionBarSize"/>
-
-     <include layout="@layout/view_em
-     pty"
-         android:layout_height="match_parent"
-         android:layout_width="match_parent"
-         android:layout_marginTop="?attr/actionBarSize"/>
- &ndash;&gt;-->
 
     <FrameLayout
         android:id="@+id/contentview"
