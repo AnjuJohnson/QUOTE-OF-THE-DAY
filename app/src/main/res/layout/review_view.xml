@@ -34,63 +34,69 @@
         android:background="#B1000000"
         android:layout_marginTop="?attr/actionBarSize"/>
     <include layout="@layout/view_progress" />
+
+    <include layout="@layout/view_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="?attr/actionBarSize"/>
+    <include layout="@layout/view_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="?attr/actionBarSize"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
         android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mrecyclerview"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/mrecyclerview"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-
-        </LinearLayout>
-        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.2">
-            <LinearLayout
-                android:layout_width="fill_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:layout_weight="1"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/thought_text"
+                android:layout_width="0dip"
                 android:layout_height="wrap_content"
-                android:gravity="bottom"
-                android:layout_gravity="bottom"
-                android:orientation="horizontal" >
+                android:layout_weight="1.0"
+                android:textColor="@android:color/white"
+                android:scrollbars="vertical"
+                android:fadeScrollbars="false"
+                android:hint="Type your Review"
+                android:textColorHint="@android:color/secondary_text_dark"
+                android:inputType="textMultiLine"
+                android:layout_marginBottom="7dp"
+                android:layout_marginLeft="7dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="6dp" />
 
-                <EditText
-                    android:id="@+id/thought_text"
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:textColor="@android:color/white"
-                    android:scrollbars="vertical"
-                    android:fadeScrollbars="false"
-                    android:hint="Type your Review"
-                    android:textColorHint="@android:color/secondary_text_dark"
-                    android:inputType="textMultiLine"
-                    android:layout_marginBottom="7dp"
-                    android:layout_marginLeft="7dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="6dp" />
-
-                <ImageButton
-                    android:id="@+id/btn_send"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:padding="10dp"
-                    android:layout_marginBottom="7dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:src="@mipmap/ic_send" />
-            </LinearLayout>
-
+            <ImageButton
+                android:id="@+id/btn_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="10dp"
+                android:layout_marginBottom="7dp"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:src="@mipmap/ic_send" />
         </LinearLayout>
+
     </LinearLayout>
 
 </FrameLayout>

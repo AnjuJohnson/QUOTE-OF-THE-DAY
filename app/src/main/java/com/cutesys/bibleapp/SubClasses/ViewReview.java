@@ -12,11 +12,14 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.cutesys.bibleapp.AdapterClasses.ReviewAdapter;
 import com.cutesys.bibleapp.Helperclasses.Config;
 import com.cutesys.bibleapp.Helperclasses.HttpOperations;
 import com.cutesys.bibleapp.Helperclasses.ListItem;
+import com.cutesys.bibleapp.HomeActivity;
 import com.cutesys.bibleapp.R;
 import com.cutesys.qdlibrary.Switcher.Switcher;
 
@@ -36,6 +39,8 @@ public class ViewReview extends AppCompatActivity implements View.OnClickListene
     SharedPreferences sPreferences;
     private RecyclerView mrecyclerview;
     private ImageButton btn_send;
+    private ImageView close;
+    private TextView error_label_retry, empty_label_retry;
 
     private ReviewAdapter mNotificationAdapter;
     ArrayList<ListItem> dataItem;
@@ -59,12 +64,19 @@ public class ViewReview extends AppCompatActivity implements View.OnClickListene
 
         switcher = new Switcher.Builder(getApplicationContext())
                 .addContentView(findViewById(R.id.mrecyclerview))
-                // .addErrorView(rootView.findViewById(R.id.error_view))
+                .addErrorView(findViewById(R.id.error_view))
                 .addProgressView(findViewById(R.id.progress_view))
-                //.setErrorLabel((TextView) rootView.findViewById(R.id.error_label))
-                // .setEmptyLabel((TextView) rootView.findViewById(R.id.empty_label))
-                // .addEmptyView(rootView.findViewById(R.id.empty_view))
+                .setErrorLabel((TextView) findViewById(R.id.error_label))
+                .setEmptyLabel((TextView) findViewById(R.id.empty_label))
+                .addEmptyView(findViewById(R.id.empty_view))
                 .build();
+
+        close = ((ImageView) findViewById(R.id.close));
+        error_label_retry = ((TextView) findViewById(R.id.error_label_retry));
+        empty_label_retry = ((TextView)findViewById(R.id.empty_label_retry));
+        error_label_retry.setOnClickListener(this);
+        empty_label_retry.setOnClickListener(this);
+        close.setOnClickListener(this);
 
         thought_text = (EditText)findViewById(R.id.thought_text);
         thought_text.addTextChangedListener(new TextWatcher() {
@@ -109,7 +121,7 @@ public class ViewReview extends AppCompatActivity implements View.OnClickListene
                     new LoadThoughtNotificationInitiate();
             mLoadThoughtNotificationInitiate.execute((Void) null);
         }else {
-            //switcher.showErrorView("No Internet Connection");
+            switcher.showErrorView("No Internet Connection");
         }
     }
 
@@ -123,12 +135,27 @@ public class ViewReview extends AppCompatActivity implements View.OnClickListene
                 if(mConfig.isOnline(getApplicationContext())){
                     LoadAddReview mLoadAddReview =
                             new LoadAddReview(THOUGHTID,
-                                    thought_text.getText().toString().replace(" ", "%20")
+                                    thought_text.getText().toString().trim().replace(" ", "%20")
                                     ,sPreferences.getString("NewUserId", ""));
                     mLoadAddReview.execute((Void) null);
                 }else {
                     //switcher.showErrorView("No Internet Connection");
                 }
+                break;
+
+            case R.id.error_label_retry:
+                InitGetData();
+                break;
+            case R.id.empty_label_retry:
+                InitGetData();
+                break;
+            case R.id.close:
+                Intent intent = new Intent(ViewReview.this,HomeActivity.class);
+//intent.putExtra("PAGE","COUNTRY");
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in,
+                        R.anim.bottom_down);
+                finish();
                 break;
         }
     }
@@ -228,17 +255,28 @@ public class ViewReview extends AppCompatActivity implements View.OnClickListene
                         mrecyclerview.setAdapter(mNotificationAdapter);
 
                     }else {
-                        //switcher.showEmptyView();
+                        switcher.showEmptyView();
                     }
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
-                //switcher.showErrorView("Please Try Again");
+                switcher.showErrorView("Please Try Again");
             } catch (NullPointerException e) {
-                // switcher.showErrorView("No Internet Connection");
+                switcher.showErrorView("No Internet Connection");
             } catch (Exception e) {
-                //switcher.showErrorView("Please Try Again");
+                switcher.showErrorView("Please Try Again");
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i=new Intent(getApplicationContext(), HomeActivity.class);
+        startActivity(i);
+        overridePendingTransition(android.R.anim.fade_in,
+                R.anim.bottom_down);
+        finish();
+
     }
 }

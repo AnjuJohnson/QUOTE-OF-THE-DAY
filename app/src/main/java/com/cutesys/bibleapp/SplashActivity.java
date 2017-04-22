@@ -145,7 +145,7 @@ public class SplashActivity  extends AppCompatActivity {
                             Log.d("yyyy",sPreferences.getString("UserName",""));
                         }
                     }else {
-                        Toast.makeText(getApplicationContext(),"No data",Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(getApplicationContext(),"No data",Toast.LENGTH_SHORT).show();
                         // switcher.showEmptyView();
                     }
                 }
