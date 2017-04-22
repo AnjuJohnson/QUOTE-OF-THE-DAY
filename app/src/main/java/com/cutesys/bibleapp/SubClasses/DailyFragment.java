@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -43,6 +44,7 @@ public class DailyFragment extends Fragment {
     private int day, year, month;
     private String mDate, mday, mmonth;
     private FloatingActionButton setdate;
+    private Button Review;
     private ViewPagerAdapter mViewpagerAdapter;
 
     private ViewPager mViewpager;
@@ -59,6 +61,7 @@ public class DailyFragment extends Fragment {
             R.drawable.img5,
     };
 
+    private String thoughtid;
     private int dotsCount;
 
     @Override
@@ -73,6 +76,21 @@ public class DailyFragment extends Fragment {
     }
 
     private void InitIDView(View rootview){
+        Review = (Button) rootview.findViewById(R.id.Review);
+        Review.setVisibility(View.GONE);
+        Review.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                System.out.println("111111111:"+thoughtid);
+                Intent intent = new Intent(getActivity(),ViewReview.class);
+                intent.putExtra("THOUGHTID",thoughtid);
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.bottom_up,
+                        android.R.anim.fade_out);
+                getActivity().finish();
+            }
+        });
         setdate = (FloatingActionButton) rootview.findViewById(R.id.setdate);
         setdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +139,7 @@ public class DailyFragment extends Fragment {
                 for (int i = 0 ; i < Data_Item.size() ; i++){
                     ListItem item = new ListItem();
 
+                    thoughtid = Data_Item.get(0).get("thought_id");
                     item.set_id(Data_Item.get(i).get("thought_id"));
                     item.set_name(Data_Item.get(i).get("thought"));
 
@@ -188,6 +207,9 @@ public class DailyFragment extends Fragment {
                             if((!feedObj.getString("quote").equals(""))
                                     && (!feedObj.getString("quote").equals("null"))) {
 
+                                if(i == 0) {
+                                    thoughtid = feedObj.getString("id");
+                                }
                                 item.set_id(feedObj.getString("id"));
                                 item.set_name(feedObj.getString("quote"));
 
@@ -225,6 +247,7 @@ public class DailyFragment extends Fragment {
 
     private void setUiPageViewController() {
 
+
         dotsCount = mViewpagerAdapter.getCount();
         dots = new ImageView[dotsCount];
         pager_indicator.removeAllViews();
@@ -248,6 +271,7 @@ public class DailyFragment extends Fragment {
 
     private void LoadToViewpager(){
 
+        Review.setVisibility(View.VISIBLE);
         mViewpagerAdapter = new ViewPagerAdapter(getActivity(),
                 mImageResources,mImageResources.length,dataItem);
 
@@ -267,6 +291,7 @@ public class DailyFragment extends Fragment {
                 }
 
                 dots[position].setImageDrawable(getResources().getDrawable(R.drawable.selecteditem_dot));
+                thoughtid = dataItem.get(position).get_id();
             }
 
             @Override

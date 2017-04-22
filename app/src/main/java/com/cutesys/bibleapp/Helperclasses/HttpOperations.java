@@ -36,9 +36,9 @@ public class HttpOperations {
 
         API_THOUGHT("QuoteApi/quotelisttoday", "POST"),
         API_NOTIFICATIONLIST("NotificationApi/notificationlist", "POST"),
-        API_REVIEW_LIST("CompanyApi/company_doc_status_list", "POST"),
-        API_ADD_USER("QuoteApi/useradd", "POST"),
-        API_ADDVISASPONSOR("VisaApi/addvisasponsor", "POST");
+        API_REVIEW_LIST("QuoteApi/reviewlist", "POST"),
+        API_ADDREVIEW("QuoteApi/reviewadd", "POST"),
+        API_ADD_USER("QuoteApi/useradd", "POST");
 
         private final String api_name;
         private final String method;
@@ -69,25 +69,25 @@ public class HttpOperations {
                 500);
     }
 
-    // Review list
-    public StringBuilder doReview_List(final String userid) {
-        HashMap<String, String> params = new HashMap<String, String>();
-        return sendRequest(params, APIS.API_REVIEW_LIST, "?start="+0+"&limit="+
-                500+"&user_id="+userid);
-    }
     // add user
     public StringBuilder doAddUser(final String mUser) {
         HashMap<String, String> params = new HashMap<String, String>();
         return sendRequest(params, APIS.API_ADD_USER, "?&user="+mUser);
     }
 
-    // add review
-    public StringBuilder doAddReview(final String quotes_id, final String date, final String review,
-                                      final String user) {
+    // Review list
+    public StringBuilder doReview_List(final String userid) {
         HashMap<String, String> params = new HashMap<String, String>();
-       /* return sendRequest(params, APIS.API_ADDVISASPONSOR, "?admin_id="+id+"&Authorization="+
-                authorization+"&name="+data+"&email="+mail);*/
-        return null;
+        return sendRequest(params, APIS.API_REVIEW_LIST, "?start="+0+"&limit="+
+                500+"&user_id="+userid);
+    }
+
+    // add review
+    public StringBuilder doAddReview(final String quotes_id,final String review,
+                                     final String user) {
+        HashMap<String, String> params = new HashMap<String, String>();
+        return sendRequest(params, APIS.API_ADDREVIEW, "?quotes_id="+quotes_id+"&review="+
+                review+"&user_id="+user);
     }
 
     public StringBuilder sendRequest(HashMap<String, String> params, APIS api, String URL) {

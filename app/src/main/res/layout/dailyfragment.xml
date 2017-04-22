@@ -37,8 +37,11 @@
             android:id="@+id/viewPagerIndicator"
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            android:orientation="vertical"
             android:layout_gravity="bottom"
+            android:layout_marginBottom="40dp"
             android:gravity="center">
+
 
             <LinearLayout
                 android:id="@+id/viewPagerCountDots"
@@ -49,6 +52,7 @@
                 android:orientation="horizontal" />
 
         </LinearLayout>
+
     </FrameLayout>
     <com.cutesys.qdlibrary.FloatingActionButton
         android:id="@+id/setdate"
@@ -56,5 +60,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:src="@mipmap/ic_alarm"
+        android:layout_marginBottom="40dp"
         style="@style/MenuButtonsStyle" />
+    <Button
+        android:id="@+id/Review"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:background="@color/colorAccent"
+        android:layout_gravity="bottom|center"
+        android:gravity="center"
+        android:text="Review"
+        android:textColor="@color/white"/>
 </FrameLayout>

@@ -49,7 +49,7 @@
             android:name=".Alarm.About"
             android:label="About"
             android:theme="@style/AlarmAppTheme"/>
-
+        <activity android:name=".SubClasses.ViewReview"></activity>
         <receiver
             android:name=".Alarm.AlarmReceiver"
             android:process=":remote" />
