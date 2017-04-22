@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.cutesys.bibleapp.AdapterClasses.NotificationAdapter;
 import com.cutesys.bibleapp.Helperclasses.Config;
@@ -55,11 +56,11 @@ public class NotificationFragment extends Fragment {
 
         switcher = new Switcher.Builder(getActivity())
                 .addContentView(rootview.findViewById(R.id.mrecyclerview))
-                // .addErrorView(rootView.findViewById(R.id.error_view))
+                 .addErrorView(rootview.findViewById(R.id.error_view))
                 .addProgressView(rootview.findViewById(R.id.progress_view))
-                //.setErrorLabel((TextView) rootView.findViewById(R.id.error_label))
-                // .setEmptyLabel((TextView) rootView.findViewById(R.id.empty_label))
-                // .addEmptyView(rootView.findViewById(R.id.empty_view))
+                .setErrorLabel((TextView) rootview.findViewById(R.id.error_label))
+                 .setEmptyLabel((TextView) rootview.findViewById(R.id.empty_label))
+                 .addEmptyView(rootview.findViewById(R.id.empty_view))
                 .build();
 
         mrecyclerview = ((RecyclerView)rootview.findViewById(R.id.mrecyclerview));
@@ -80,7 +81,7 @@ public class NotificationFragment extends Fragment {
                     new LoadThoughtNotificationInitiate();
             mLoadThoughtNotificationInitiate.execute((Void) null);
         }else {
-            //switcher.showErrorView("No Internet Connection");
+            switcher.showErrorView("No Internet Connection");
         }
     }
 
@@ -133,17 +134,17 @@ public class NotificationFragment extends Fragment {
                         mrecyclerview.setAdapter(mNotificationAdapter);
 
                     }else {
-                        //switcher.showEmptyView();
+                        switcher.showEmptyView();
                     }
                 }
 
             } catch (JSONException e) {
                 e.printStackTrace();
-                //switcher.showErrorView("Please Try Again");
+                switcher.showErrorView("Please Try Again");
             } catch (NullPointerException e) {
-                // switcher.showErrorView("No Internet Connection");
+                 switcher.showErrorView("No Internet Connection");
             } catch (Exception e) {
-                //switcher.showErrorView("Please Try Again");
+                switcher.showErrorView("Please Try Again");
             }
         }
     }

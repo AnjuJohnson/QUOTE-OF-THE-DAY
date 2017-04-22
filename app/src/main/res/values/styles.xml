@@ -9,7 +9,10 @@
         <item name="colorControlHighlight">@android:color/white</item>
 
     </style>
-
+    <style name="layoutmatchwrap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
     <style name="AlarmAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

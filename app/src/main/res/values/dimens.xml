@@ -5,4 +5,5 @@
     <dimen name="menupading">10dp</dimen>
     <dimen name="toolbartitle">17sp</dimen>
     <dimen name="fab_margin">12dp</dimen>
+    <dimen name="text_size_15">15sp</dimen>
 </resources>

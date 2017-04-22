@@ -105,11 +105,11 @@ public class HistoryFragment extends Fragment implements View.OnClickListener{
 
         switcher = new Switcher.Builder(getActivity())
                 .addContentView(rooView.findViewById(R.id.contentview))
-                // .addErrorView(rootView.findViewById(R.id.error_view))
+                 .addErrorView(rooView.findViewById(R.id.error_view))
                 .addProgressView(rooView.findViewById(R.id.progress_view))
-                //.setErrorLabel((TextView) rootView.findViewById(R.id.error_label))
-                // .setEmptyLabel((TextView) rootView.findViewById(R.id.empty_label))
-                // .addEmptyView(rootView.findViewById(R.id.empty_view))
+                .setErrorLabel((TextView) rooView.findViewById(R.id.error_label))
+                .setEmptyLabel((TextView) rooView.findViewById(R.id.empty_label))
+                 .addEmptyView(rooView.findViewById(R.id.empty_view))
                 .build();
 
         final List<HashMap<String, String>> Data_Item;
@@ -142,7 +142,7 @@ public class HistoryFragment extends Fragment implements View.OnClickListener{
             LoadThoughtInitiate mLoadThoughtInitiate = new LoadThoughtInitiate(date);
             mLoadThoughtInitiate.execute((Void) null);
         }else {
-            // switcher.showErrorView("No Internet Connection");
+             switcher.showErrorView("No Internet Connection");
         }
     }
 
@@ -266,17 +266,17 @@ public class HistoryFragment extends Fragment implements View.OnClickListener{
                        LoadToViewpager();
 
                     }else {
-                        //switcher.showEmptyView();
+                        switcher.showEmptyView();
                     }
                 }
 
             } catch (JSONException e) {
                 e.printStackTrace();
-                //switcher.showErrorView("Please Try Again");
+                switcher.showErrorView("Please Try Again");
             } catch (NullPointerException e) {
-                // switcher.showErrorView("No Internet Connection");
+                switcher.showErrorView("No Internet Connection");
             } catch (Exception e) {
-                //switcher.showErrorView("Please Try Again");
+                switcher.showErrorView("Please Try Again");
             }
         }
     }
